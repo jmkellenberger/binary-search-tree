@@ -14,19 +14,18 @@ class Tree
 
   def initialize(array)
     sorted = array.uniq.sort
-    @root = build_tree(sorted)
+    @root = build_tree(sorted, 0, sorted.length - 1)
   end
 
-  def build_tree(sorted)
-    return unless sorted.instance_of?(Array)
+  def build_tree(sorted, start, last)
+    return nil if start > last
 
-    mid = sorted.length / 2
+    mid = (start + last) / 2
     
     node = Node.new(sorted[mid])
-    return node if sorted.length < 2
 
-    node.left = build_tree(sorted.slice(0..mid - 1))
-    node.right = build_tree(sorted.slice(mid + 1..))
+    node.left = build_tree(sorted, start, mid - 1)
+    node.right = build_tree(sorted, mid + 1, last)
 
     node
   end
@@ -39,9 +38,9 @@ class Tree
   end
 end
 
-data = (Array.new(rand(15..60)) { rand(1..100) })
+data = (Array.new(15) { rand(1..100) })
 puts "Sorting #{data} and removing duplicates..."
-puts "Creating a new tree from #{data.sort.uniq}..."
+puts "Creating a new tree from #{data.uniq.sort.length} elements..."
 tree = Tree.new(data)
 
 tree.pretty_print
