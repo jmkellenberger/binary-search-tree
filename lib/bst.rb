@@ -9,6 +9,7 @@ class Node
   end
 end
 
+# A balanced binary search tree
 class Tree
   attr_reader :root
 
@@ -21,13 +22,43 @@ class Tree
     return nil if start > last
 
     mid = (start + last) / 2
-    
+
     node = Node.new(sorted[mid])
 
     node.left = build_tree(sorted, start, mid - 1)
     node.right = build_tree(sorted, mid + 1, last)
 
     node
+  end
+
+  def insert (value)
+  end
+
+  def delete (value)
+  end
+
+  def find(value)
+  end
+
+  def level_order
+  end
+
+  def inorder
+  end
+
+  def preorder
+  end
+
+  def postorder
+  end
+
+  def height
+  end
+
+  def balanced?
+  end
+
+  def rebalance
   end
 
   # from another student of theodinproject.com
@@ -38,7 +69,7 @@ class Tree
   end
 end
 
-data = (Array.new(15) { rand(1..100) })
+data = (Array.new(10) { rand(1..100) })
 puts "Sorting #{data} and removing duplicates..."
 puts "Creating a new tree from #{data.uniq.sort.length} elements..."
 tree = Tree.new(data)
