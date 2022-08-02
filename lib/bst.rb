@@ -69,9 +69,3 @@ class Tree
   end
 end
 
-data = (Array.new(10) { rand(1..100) })
-puts "Sorting #{data} and removing duplicates..."
-puts "Creating a new tree from #{data.uniq.sort.length} elements..."
-tree = Tree.new(data)
-
-tree.pretty_print
