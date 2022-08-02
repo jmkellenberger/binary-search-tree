@@ -31,6 +31,7 @@ class Tree
     node
   end
 
+  # from another student of theodinproject.com
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
@@ -38,7 +39,7 @@ class Tree
   end
 end
 
-data = (Array.new(15) { rand(1..100) })
+data = (Array.new(rand(15..60)) { rand(1..100) })
 puts "Sorting #{data} and removing duplicates..."
 puts "Creating a new tree from #{data.sort.uniq}..."
 tree = Tree.new(data)
